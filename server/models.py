@@ -20,7 +20,7 @@ class Bakery(db.Model, SerializerMixin):
 
     baked_goods = db.relationship('BakedGood', backref='bakery')
 
-    def __repr__(self):
+    def _repr_(self):
         return f'<Bakery {self.name}>'
 
 class BakedGood(db.Model, SerializerMixin):
@@ -36,5 +36,5 @@ class BakedGood(db.Model, SerializerMixin):
 
     bakery_id = db.Column(db.Integer, db.ForeignKey('bakeries.id'))
 
-    def __repr__(self):
+    def _repr_(self):
         return f'<Baked Good {self.name}, ${self.price}>'
